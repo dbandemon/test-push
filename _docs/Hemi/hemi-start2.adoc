@@ -1,0 +1,175 @@
+= Sample Page
+:page-layout: default
+:page-permalink: hemi-start2.html
+:url-asciidoctor: http://asciidoctor.org
+:imagesdir: docs/images
+
+
+= Architecture Patterns
+:TOC:
+
+ 
+
+## WHAT IS HEMI?
+
+
+image::hemi microservices high level 1.png[]
+
+
+### Problem Statement
+
+ 
+
+Many of our OptumRx digital systems are experiencing lack luster performance and availiability/reliability issues related to the aging architecture of some of our legacy backend systems and complicated middleware layers.
+
+ 
+
+### HEMI Objectives
+
+ 
+
+Build a cloud-based content and integration platform that unlocks data for consuming applications on digital and marketing channels adhering to Optum standards of Security, Availability, Reliability and Performance.
+
+ 
+
+//image::./images/hemi%20microservices%20high%20level%201.JPG[HEMI High Level Pattern]
+
+ 
+
+ 
+
+### High Level Aspirations
+
+ 
+
+* Public Cloud first design and deployment
+
+* A common point of consumption for standard data avoids extensive replication of data workloads
+
+* Provide Content and Data as a Service
+
+* Common, high-performance data access streamlines and accelerates digital portal TTV, speed, and quality
+
+ 
+
+[HEMI FAQs]
+
+ 
+
+## Is HEMI something for me...
+
+ 
+
+* Are your consumers suffering from poor performance?
+
+* Is the reliability of your system less than what you would like?
+
+* Are you unsure how to move off of an aging technology stack?
+
+* Does your application need to share data with other applications?
+
+* Do you offer services that are needed by other applications that may be duplicates of other services existing in the company?
+
+* Do you want to "unlock" data contained in your system, but are not sure how to do it?
+
+ 
+
+Then maybe HEMI or some of HEMI patterns may be something for you...
+
+ 
+
+ 
+
+## Architecture Guiding Principles
+
+ 
+
+ 
+
+//image::./images/Guiding%20Principles.png[HEMI Principles]
+
+ 
+
+ 
+
+## High Level Reference Architecture
+
+ 
+
+### Overall Architecture Goals
+
+* Cache data needed by our digital systems in the cloud in a de-normalized "easy to access" format.
+
+* Stream changes in this data from the source/legacy systems real-time to the cloud.
+
+* Transform the streaming data into an enriched HCP canonical format for consistency and standardization across systems.
+
+* Provide new reusable microservices than encapsulate all runtime processing for a specific function into a single microservice.
+
+* Group HEMI microservices into functional domains that share nothing to support loose coupling between domains.
+
+* Construct our processes in a way that leverages the advantages of the cloud including managed services, IaaS, automation, auto-scaling, multi-region, etc.
+
+* Automate everything
+
+ 
+
+ 
+
+//image::./images/EA%20Future%20State%20Blueprint%20v5.jpg[HEMI Arch]
+
+ 
+
+ 
+
+### Streaming Reference Architecture
+
+* Unified and Centralized source of truth as Raw Streams from backend systems
+
+* Flexibility to have dedicated canonical model and transformation rules by consumers
+
+* Independent canonical streams that can be subscribed across eco-systems
+
+* Optimized operational cost across cross functional business units
+
+* Single talent pool which owns, operates and enhances the data federation roadmap
+
+ 
+
+                   
+
+//image::./images/Streaming%20Strategy%20v6.jpg[HEMI Architecture]
+
+ 
+
+ 
+
+## Additional References
+
+ 
+
+**Healthcare Platform**
+
+ 
+
+* https://github.optum.com/hcp-core-data/how-to-hcp[How to HCP]
+
+ 
+
+* https://hubconnect.uhg.com/docs/DOC-182841[Healthcare Platform Overview]
+
+ 
+
+* https://hubconnect.uhg.com/docs/DOC-195249[Healthcare Platform Glossary of terms]
+
+ 
+
+* https://hubconnect.uhg.com/docs/DOC-187251[Healthcare Platform Architecture]
+
+ 
+
+**Other Reference**
+
+ 
+
+* https://commercialcloud.optum.com/[Commercial Cloud]

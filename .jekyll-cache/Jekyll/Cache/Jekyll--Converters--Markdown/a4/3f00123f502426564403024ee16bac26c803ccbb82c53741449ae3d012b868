@@ -1,0 +1,213 @@
+I"�9<p>The Jekyll Doc Project theme is intended for technical documentation projects, such as user guides for software, hardware, and APIs. This Jekyll theme (which has an Apache 2.0 open source license) uses pages exclusively and features robust multi-level navigation. It includes both web and PDF output. The GitHub repo is here: <a href="https://github.com/amzn/jekyll-theme-doc-project">amzn/jekyll-theme-doc-project</a>.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#installation" id="markdown-toc-installation">Installation</a></li>
+  <li><a href="#overwriting-theme-files" id="markdown-toc-overwriting-theme-files">Overwriting Theme Files</a></li>
+  <li><a href="#content-types" id="markdown-toc-content-types">Content Types</a></li>
+  <li><a href="#breadcrumbsection" id="markdown-toc-breadcrumbsection">Breadcrumbs</a></li>
+  <li><a href="#images" id="markdown-toc-images">Images</a>    <ul>
+      <li><a href="#storing-images-inside-the-project" id="markdown-toc-storing-images-inside-the-project">Storing Images Inside the Project</a></li>
+      <li><a href="#storing-images-outside-your-project" id="markdown-toc-storing-images-outside-your-project">Storing Images Outside Your Project</a></li>
+    </ul>
+  </li>
+  <li><a href="#frontmatter" id="markdown-toc-frontmatter">Frontmatter</a></li>
+  <li><a href="#sidebar-configuration" id="markdown-toc-sidebar-configuration">Sidebar Configuration</a></li>
+  <li><a href="#top-navigation-bar" id="markdown-toc-top-navigation-bar">Top Navigation Bar</a></li>
+  <li><a href="#configure-the-footer" id="markdown-toc-configure-the-footer">Configure the Footer</a></li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<p>Before you can install the project, you may need to install Jekyll.</p>
+
+<ol>
+  <li>Install Jekyll:
+    <ul>
+      <li><a href="jekyllhowto-install-jekyll-on-mac.html">Install Jekyll on Mac</a></li>
+      <li><a href="jekyllhowto-install-jekyll-on-windows.html">Install Jekyll on Windows</a></li>
+    </ul>
+
+    <p>You can check if you already have Jekyll installed by running <code class="highlighter-rouge">jekyll -v</code>. If you don’t have the latest version, run <code class="highlighter-rouge">gem update jekyll</code>.</p>
+  </li>
+  <li>Download the theme from the <a href="https://github.com/amzn/jekyll-theme-doc-project">amzn/jekyll-theme-doc-project</a> repo.</li>
+  <li>Configure the values in the <strong>_config.yml</strong> file based on the inline code comments in that file.</li>
+  <li>
+    <p>Serve or build the Jekyll site:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll serve
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="overwriting-theme-files">Overwriting Theme Files</h2>
+
+<p>You’ll most likely want to add some of your own styles, esp. to style the top navigation bar and other elements. There are three files specifically set up for this:</p>
+
+<ul>
+  <li><strong>assets/css/pdf/user_defined_web_styles.css</strong> (web styles)</li>
+  <li><strong>assets/css/pdf/user_defined_pdf_styles.css</strong> (print styles)</li>
+  <li><strong>assets/js/user_defined_javascript.js</strong> (web javascript)</li>
+</ul>
+
+<p>These files are blank but are referenced in the theme’s layout files. By adding these files in your project and defining your styles, they will automatically be included in the layout.</p>
+
+<h2 id="content-types">Content Types</h2>
+
+<p>This theme uses collections exclusively (instead of posts). Collections are a content type, like a page or post. In this case, the content type is a document within the “docs” folder. Documents function just like pages, for the most part. (When referring to them in this documentation,  “pages” and “documents” are used interchangeably.) Organize your pages inside the <strong>_docs</strong> folder.</p>
+
+<p>Organize your pages with the folder structure that you want displayed in the <a href="#breadcrumbsection">breadcrumb</a>. Use the spacing and capitalization in your folder names that you want reflected in your breadcrumb path. For example, “Getting Started” instead of “getting_started”.</p>
+
+<p>The folder structure informs the breadcrumb display only. Upon build, the site output will pull all of the pages out of their folders, subfolders, etc., and put them into the root directory of _site. This “flattening” of the page hierarchy enables relative linking in the project. Relative links allow you to view the built site offline or to push it from one environment or directory structure to the next without worrying about valid paths to theme assets or other links.</p>
+
+<h2 id="breadcrumbsection">Breadcrumbs</h2>
+
+<p>If you want breadcrumbs in your project, set these properties in the _config.yml file:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Display breadcrumbs at all?</span>
+<span class="na">breadcrumb_display</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="c1"># Display Home path in breadcrumb?</span>
+<span class="na">breadcrumb_home_display</span><span class="pi">:</span> <span class="no">true</span>
+
+<span class="c1"># Url for Home path to point to</span>
+<span class="na">breadcrumb_home_url</span><span class="pi">:</span> <span class="s">http://yourcompanysite.com</span>
+
+<span class="c1"># Display name for "Home" path</span>
+<span class="na">breadcrumb_home_name</span><span class="pi">:</span> <span class="s">Home</span>
+</code></pre></div></div>
+
+<p>Jekyll projects require an index.html (or index.md) file in your root directory. This is the page that loads by default. Because this page lives outside your regular _docs directory, you have to manually define the breadcrumb path (after Home) that you want there.</p>
+
+<p>Note that clicking the folder paths in the breadcrumb doesn’t do anything except for Home. Visually, all paths look the same, but no logic is configured to dynamically render a list of items contained in file path folders.</p>
+
+<h2 id="images">Images</h2>
+
+<p>You can store your images either inside or outside your project. In both cases, use the <a href="jekyllhowto-content-and-formatting.html#images_section">image include</a> to insert images in your pages.</p>
+
+<h3 id="storing-images-inside-the-project">Storing Images Inside the Project</h3>
+
+<p>If you want to store your images inside your Jekyll project, store the images in the _docs/images folder. In the _config.yml file, set the image path that will be prepended to the image file name. By default, the output will show the images in the same folder structure as you have in your Jekyll project source directory. If you put your images in <strong>\/images</strong>, then when your Jekyll site builds, your images will be in <strong>\/images</strong>. Rather than writing <strong>images/myfile.png</strong> in the <code class="highlighter-rouge">file</code> parameter of the image include, you can put the image path in the config file’s <code class="highlighter-rouge">image_path</code> parameter:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>image_path: images
+</code></pre></div></div>
+
+<p>This path will be prepended before image file names. (Note that a trailing slash is added automatically in the image include.)</p>
+
+<p>This way, when you use the image include to insert images, you can simply write <strong>myfile.png</strong> for the <code class="highlighter-rouge">file</code> parameter.</p>
+
+<h3 id="storing-images-outside-your-project">Storing Images Outside Your Project</h3>
+
+<p>Sometimes you might want to store your images outside your Jekyll build. Git repos don’t handle large numbers of images well (your .git files become huge), since images are binaries. If you want to store images outside your project, open <strong>.gitignore</strong> and add <strong>images</strong> to it.</p>
+
+<p>In the <code class="highlighter-rouge">image_path</code> property in the _config.yml file, define the path where the images will be available:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>image_path: https://s3-us-west-1.amazonaws.com/my-bucket-name/my-project-images
+</code></pre></div></div>
+
+<p>If you’re using AWS S3, you can transfer images to your server from the command line. See <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-install-macos.html">AWS Command Line Interface</a> for details. After installing the aws cli, you’ll need to <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html">configure your credentials</a> and determine the right <a href="http://docs.aws.amazon.com/cli/latest/userguide/using-s3-commands.html">commands to transfer files</a> to your bucket.</p>
+
+<p>Within your Jekyll project, you could add a shell script that contains the command needed to transfer files to your bucket, like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>aws s3 sync images s3://my-bucket-name/my-project-images
+</code></pre></div></div>
+
+<p>The images_upload.sh contains this generic AWS CLI command. The S3 bucket will store the images in a structure like this:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my-bucket-name &gt; my-project-images &gt; image1.png
+
+├── my-bucket-name
+│   ├── my-project-images
+│      ├── image1.png
+</code></pre></div></div>
+
+<h2 id="frontmatter">Frontmatter</h2>
+
+<p>Make sure each page has frontmatter at the top like this:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Sample</span><span class="nv"> </span><span class="s">1:</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">Beginning"</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">sample.html</span>
+<span class="na">sidebar</span><span class="pi">:</span> <span class="s">generic</span>
+<span class="na">product</span><span class="pi">:</span> <span class="s">Generic Product</span>
+<span class="nn">---</span>
+</code></pre></div></div>
+
+<p>(Even if it’s a Markdown file, the <code class="highlighter-rouge">permalink</code> property should specify the .html extension, since this is how the file will appear in the output.)</p>
+
+<table>
+   <colgroup>
+      <col width="30%" />
+      <col width="70%" />
+   </colgroup>
+   <thead>
+      <tr>
+         <th>Property</th>
+         <th>Description</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>title</td>
+         <td>The title for the page. If you want to use a colon in your page title, you must enclose the title’s value in quotation marks. Note that titles in your pages’ frontmatter are not synced with the titles in your sidebar data file. If you change it in one place, remember to change it in the other too.</td>
+      </tr>
+      <tr>
+         <td>permalink</td>
+         <td>Use the same name as your file name, but use “.html” instead of “.md” in the permalink property. Do not put forward slashes around the permalink (this makes Jekyll put the file inside a folder in the output). When Jekyll builds the site, it will put the page into the root directory rather than leaving it in a subdirectory or putting it inside a folder and naming the file index.html. </td>
+      </tr>
+      <tr>
+         <td>sidebar</td>
+         <td>The name of the sidebar that this page should use (don’t include “.yml” in the name). </td>
+      </tr>
+      <tr>
+         <td>product</td>
+         <td>The product for this content. This appears in search and could be used in integrations with more robust search services.</td>
+      </tr>
+   </tbody>
+</table>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> You can store the <code class="highlighter-rouge">sidebar</code> and <code class="highlighter-rouge">product</code> frontmatter as defaults in your project’s _config.yml file.</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>defaults:
+
+  -
+    scope:
+      path: ""
+      type: docs/myproject
+    values:
+      product: My Project
+      sidebar: myprojectsidebar
+</code></pre></div></div>
+
+<p>In this example, all documents in the _docs/myproject file will automatically have <code class="highlighter-rouge">product: My Project</code> and <code class="highlighter-rouge">sidebar: myprojectsidebar</code> as values in the frontmatter when the site builds.</p>
+
+<h2 id="sidebar-configuration">Sidebar Configuration</h2>
+
+<p>To configure the sidebar, copy the format shown in _data/generic.yml into a new sidebar file. (Keep generic.yml as an example in your project, because YAML syntax can be picky and sometimes frustrating to get right. Generic.yml shows an example of content at every level.)</p>
+
+<p>Each of your pages should reference the appropriate sidebar either in the page’s frontmatter or as defined in the defaults in your _config.yml file. See <a href="jekyllhowto-sidebar-navigation.html">Sidebar Navigation</a> for more details.</p>
+
+<h2 id="top-navigation-bar">Top Navigation Bar</h2>
+
+<p>You configure the top navigation bar through the _data/topnav.yml file. You can configure single links or links with drop downs. If you want the search to appear in the sidebar rather than the top nav, see these options in the _config.yml file:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">search_in_topnav</span><span class="pi">:</span> <span class="no">true</span>
+<span class="na">search_in_sidebar</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div></div>
+
+<p>Placing the search in the top navigation bar gives the theme more visual balance.</p>
+
+<p>When you shrink the browser size, the navbar options change to a couple of icons. You can control whether those icons appear with these settings in _config.yml:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">toggle-sidebar-button</span><span class="pi">:</span> <span class="s">none</span>
+<span class="na">navbar-toggle</span><span class="pi">:</span> <span class="s">none</span>
+</code></pre></div></div>
+
+<p>(You might want to hide these buttons if your nav bar doesn’t have any links or options, or if the sidebar is empty.)</p>
+
+<h2 id="configure-the-footer">Configure the Footer</h2>
+
+<p>You configure the footer through the options in _data/footer.yml.</p>
+
+<!-- left blank intentionally. intended to be overwritten in custom projects. -->
+
+:ET
