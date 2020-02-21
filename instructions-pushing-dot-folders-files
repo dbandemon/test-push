@@ -1,0 +1,25 @@
+pushing from branch A to Branch B
+"git push origin branch1:branch2"
+
+"git add *" to add evertying to branch
+
+
+Steps for hosting site on github pages: 
+
+1. cd into project
+2. initialize repo "git init"
+add necessary files into local git repo 
+3. add remote if not already exists " git remote add origin url"
+4. check remote "git remote -v"
+5. add all files to staging for git "git add -A"
+6. "git status" to check everthing is going over
+7. following instructions are for setting "gh-pages" as new default branch given that your other branch is called "master"
+	7.1 $ git checkout gh-pages
+	7.2 $ git branch -m master master
+	7.3 $ git branch -m gh-pages master
+	7.4 $ git status
+			On branch gh-pages
+			Your branch is up to date with 'origin/gh-pages'.
+	7.5  git commit -m "first push"
+	7.6 git push
+
